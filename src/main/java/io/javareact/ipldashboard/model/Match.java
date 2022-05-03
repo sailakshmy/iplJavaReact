@@ -13,6 +13,8 @@ public class Match {
     private String venue;
     private String tossWinner;
     private String tossDecision;
+    private String firstInningsTeam;
+    private String secondInningsTeam;
     private String superOver;
     private String winningTeam;
     private String wonBy;
@@ -101,6 +103,22 @@ public class Match {
 
     public void setTossDecision(String tossDecision) {
         this.tossDecision = tossDecision;
+    }
+
+    public String getFirstInningsTeam() {
+        return firstInningsTeam;
+    }
+
+    public void setFirstInningsTeam(String firstInningsTeam) {
+        this.firstInningsTeam = firstInningsTeam;
+    }
+
+    public String getSecondInningsTeam() {
+        return secondInningsTeam;
+    }
+
+    public void setSecondInningsTeam(String secondInningsTeam) {
+        this.secondInningsTeam = secondInningsTeam;
     }
 
     public String getSuperOver() {

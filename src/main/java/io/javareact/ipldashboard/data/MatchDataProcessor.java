@@ -33,6 +33,25 @@ public class MatchDataProcessor implements ItemProcessor<MatchInput, Match> {
         match.setTeam2Players(matchInput.getTeam2Players());
         match.setUmpire1(matchInput.getUmpire1());
         match.setUmpire2(matchInput.getUmpire2());
+
+        // Set Team1 and Team2 based on the innings order, which in turn depends on who
+        // won the toss
+        // and what the tam selected
+        String firstInningsTeam, secondInningsTeam;
+        if ("bat".equals(matchInput.getTossDecision())) {
+            firstInningsTeam = matchInput.getTossWinner();
+            secondInningsTeam = matchInput.getTossWinner().equals(matchInput.getTeam1())
+                    ? matchInput.getTeam2()
+                    : matchInput.getTeam1();
+        } else {
+            secondInningsTeam = matchInput.getTossWinner();
+            firstInningsTeam = matchInput.getTossWinner().equals(matchInput.getTeam1())
+                    ? matchInput.getTeam2()
+                    : matchInput.getTeam1();
+        }
+
+        match.setFirstInningsTeam(firstInningsTeam);
+        match.setSecondInningsTeam(secondInningsTeam);
         return match;
     }
 }
