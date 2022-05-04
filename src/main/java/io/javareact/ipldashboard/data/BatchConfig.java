@@ -14,7 +14,7 @@ import org.springframework.batch.item.file.FlatFileItemReader;
 import org.springframework.batch.item.file.builder.FlatFileItemReaderBuilder;
 import org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.batch.BatchProperties.Job;
+import org.springframework.batch.core.Job;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
@@ -40,7 +40,7 @@ public class BatchConfig {
     public FlatFileItemReader<MatchInput> reader() {
         return new FlatFileItemReaderBuilder<MatchInput>()
                 .name("MatchItemReader")
-                .resource(new ClassPathResource("match-data.csv"))
+                .resource(new ClassPathResource("match_data.csv"))
                 .delimited()
                 .names(FIELD_NAMES)
                 .fieldSetMapper(new BeanWrapperFieldSetMapper<MatchInput>() {
@@ -60,7 +60,7 @@ public class BatchConfig {
     public JdbcBatchItemWriter<Match> writer(DataSource dataSource) {
         return new JdbcBatchItemWriterBuilder<Match>()
                 .itemSqlParameterSourceProvider(new BeanPropertyItemSqlParameterSourceProvider<>())
-                .sql("INSERT INTO match ( id, city, date, season, match_number, team1, team2, venue, toss_winner, toss_decision, first_innings_team, second_innings_team, super_over, winning_team, won_by, margin, player_of_match, team1_players, team2_players, umpire1, umpire2)"
+                .sql("INSERT INTO match ( id, city, date, season, match_number, team1, team2, venue, toss_winner, toss_decision, first_innings_team, second_innings_team, super_over, winning_team, won_by, margin, player_of_match, team1players, team2players, umpire1, umpire2)"
                         +
                         " VALUES (:id, :city, :date, :season, :matchNumber, :team1, :team2, :venue, :tossWinner, :tossDecision, :firstInningsTeam, :secondInningsTeam, :superOver, :winningTeam, :wonBy, :margin, :playerOfMatch, :team1Players, :team2Players, :umpire1, :umpire2)")
                 .dataSource(dataSource)
