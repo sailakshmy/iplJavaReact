@@ -1,9 +1,12 @@
 package io.javareact.ipldashboard.model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 
 @Entity
 public class Team {
@@ -14,6 +17,9 @@ public class Team {
     private String teamName;
     private long totalMatches;
     private long totalWins;
+
+    @Transient
+    private List<Match> matches;
 
     public Team() {
 
@@ -55,11 +61,19 @@ public class Team {
     public void setTotalWins(long totalWins) {
         this.totalWins = totalWins;
     }
-    // To verify if the teams are updated in the table
 
+    // To verify if the teams are updated in the table
     @Override
     public String toString() {
         return "Team [teamName=" + teamName + ", totalMatches=" + totalMatches + ", totalWins=" + totalWins + "]";
+    }
+
+    public List<Match> getMatches() {
+        return matches;
+    }
+
+    public void setMatches(List<Match> matches) {
+        this.matches = matches;
     }
 
 }
