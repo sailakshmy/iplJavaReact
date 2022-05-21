@@ -1,7 +1,7 @@
 .teamPage {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-rows: auto auto  auto;
     column-gap: 10px;
     row-gap: 10px;
 
@@ -10,11 +10,14 @@
         justify-self: start;
         align-self: end;
         font-size: 2rem;
+        margin-bottom: 1rem;
     }
 
     .winLossSection {
         grid-column: span 1;
         justify-self: center;
+        padding: 2rem;
+        text-align: center;
     }
 
     .latestMatchSection {
@@ -23,5 +26,11 @@
 
     .matchCardSection {
         grid-column: span 1;
+    }
+
+    .moreMatchesSection {
+        align-self: center;
+        justify-self: center;
+        font-size: 1.5rem;
     }
 }

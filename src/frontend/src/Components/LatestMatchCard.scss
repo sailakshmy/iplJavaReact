@@ -1,0 +1,16 @@
+.latestMatchCard {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    .additionalDetailsSection {
+        text-align: right;
+        &>p {
+            margin-bottom: 1rem;
+        }
+    }
+
+    .matchDateSection, .matchVenueSection, .matchOutcomeSection {
+        margin-top: .5rem;
+    }
+}

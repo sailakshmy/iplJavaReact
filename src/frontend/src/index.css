@@ -12,7 +12,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: hsl(220, 13%, 18%);
   color: white;
-  max-width: 65rem;
+  max-width: 55rem;
   margin: 0 auto;
 }
 a {

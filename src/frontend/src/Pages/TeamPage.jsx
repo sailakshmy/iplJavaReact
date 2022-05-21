@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import LatestMatchCard from '../Components/LatestMatchCard';
 import MatchCard from '../Components/MatchCard';
+import WinLossPieChart from '../Components/WinLossPieChart';
 import './TeamPage.scss';
 
 function TeamPage() {
@@ -35,7 +36,9 @@ function TeamPage() {
             <div className='teamNameSection'>
                 <h2>{team.teamName}</h2>
             </div>
-            <div className='winLossSection'>Wins/Losses</div>
+            <div className='winLossSection'>Wins/Losses
+                <WinLossPieChart wins={team.totalWins} loss={team.totalMatches-team.totalWins} />
+            </div>
             {team.matches.map((match, index) => {
                 if (index === 0)
                     return (
@@ -51,7 +54,7 @@ function TeamPage() {
                 );
             })}
             <div className="moreMatchesSection">
-                <Link to="#">More</Link>
+                <Link to="#">More {'>'}</Link>
             </div>
         </div>
     )
