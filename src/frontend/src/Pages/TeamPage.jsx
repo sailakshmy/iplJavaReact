@@ -17,7 +17,7 @@ function TeamPage() {
     const [error, setError] = useState(false);
     const { teamName } = useParams();
     useEffect(() => {
-        const fetchMatches = async () => {
+        const fetchTeam = async () => {
             const response = await fetch(`http://localhost:8080/team/${teamName}`);
             const data = await response.json();
             console.log(data);
@@ -26,7 +26,7 @@ function TeamPage() {
             }
             else setTeam(data);
         };
-        fetchMatches();
+        fetchTeam();
     }, [teamName]);
 
     if (error)
