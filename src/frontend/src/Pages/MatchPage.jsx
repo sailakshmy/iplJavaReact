@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import LatestMatchCard from '../Components/LatestMatchCard';
+import YearSelector from '../Components/YearSelector';
+import './MatchPage.scss';
 
 function MatchPage() {
 
@@ -24,8 +26,14 @@ function MatchPage() {
     return <h1>No Matches found!! Please check the team Name and the year.</h1>
   return (
     <div className='matchPage'>
-      <h1>Match Page</h1>
-      {matches.map((match)=>( <LatestMatchCard match={match} teamName={teamName} key={match.id} />))}
+      <div className="yearSelectorSection">
+        <h4>Select Year</h4>
+        <YearSelector teamName={teamName}/>
+      </div>
+      <div>
+      <h1>Match History for {teamName} in {year}</h1>
+         {matches.map((match)=>( <LatestMatchCard match={match} teamName={teamName} key={match.id} />))}
+      </div>
     </div>
   )
 }

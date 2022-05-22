@@ -9,7 +9,7 @@ function WinLossPieChart({wins, loss}) {
 ]
   return (
     <div>
-      <PieChart data={dataForPieChart} />
+      <PieChart data={dataForPieChart} radius={40}/>
     </div>
   )
 }

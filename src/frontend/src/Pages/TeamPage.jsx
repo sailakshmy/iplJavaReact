@@ -54,7 +54,7 @@ function TeamPage() {
                 );
             })}
             <div className="moreMatchesSection">
-                <Link to="#">More {'>'}</Link>
+                <Link to={`/teams/${teamName}/matches/${process.env.REACT_APP_DATA_END_YEAR}`}>More {'>'}</Link>
             </div>
         </div>
     )
