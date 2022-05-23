@@ -20,7 +20,7 @@ function TeamPage() {
         const fetchTeam = async () => {
             const response = await fetch(`http://localhost:8080/team/${teamName}`);
             const data = await response.json();
-            console.log(data);
+            // console.log(data);
             if (data.status === 500) {
                 setError(true);
             }

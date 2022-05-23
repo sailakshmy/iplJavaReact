@@ -14,7 +14,7 @@ function MatchPage() {
       const fetchMatchesByTeamInYear = async ()=>{
           const response = await fetch(`http://localhost:8080/team/${teamName}/matches?year=${year}`);
           const data = await response.json();
-          console.log(data);
+          // console.log(data);
           if(data.length === 0)
           setError(true);
           else

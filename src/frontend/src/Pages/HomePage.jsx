@@ -10,7 +10,7 @@ function HomePage() {
         const fetchAllTeams = async () => {
             const response = await fetch ('http://localhost:8080/teams');
             const data = await response.json();
-            console.log(data);
+            // console.log(data);
             setTeams(data);
         };
         fetchAllTeams();
