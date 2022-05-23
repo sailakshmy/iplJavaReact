@@ -1,5 +1,5 @@
 import './App.scss';
-import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import {HashRouter as Router, Routes, Route} from 'react-router-dom';
 import TeamPage from './Pages/TeamPage';
 import MatchPage from './Pages/MatchPage';
 import HomePage from './Pages/HomePage';
