@@ -8,34 +8,35 @@ function MatchPage() {
 
   const [matches, setMatches] = useState([]);
   const [error, setError] = useState(false);
-  const {teamName, year} = useParams();  
+  const { teamName, year } = useParams();
 
-  useEffect(()=>{
-      const fetchMatchesByTeamInYear = async ()=>{
-          const response = await fetch(`${process.env.REACT_APP_API_ROOT_URL}/team/${teamName}/matches?year=${year}`);
-          const data = await response.json();
-          // console.log(data);
-          if(data.length === 0)
-          setError(true);
-          else
-          setMatches(data);
-      };
-      fetchMatchesByTeamInYear();
-  },[teamName, year]);
-  if(error)
+  useEffect(() => {
+    const fetchMatchesByTeamInYear = async () => {
+      const response = await fetch(`${process.env.REACT_APP_API_ROOT_URL}/team/${teamName}/matches?year=${year}`);
+      const data = await response.json();
+      // console.log(data);
+      if (data.length === 0)
+        setError(true);
+      else
+        setMatches(data);
+    };
+    fetchMatchesByTeamInYear();
+  }, [teamName, year]);
+  if (error)
     return <h1>No Matches found!! Please check the team Name and the year.</h1>
-  return (
-    <div className='matchPage'>
-      <div className="yearSelectorSection">
-        <h4>Select Year</h4>
-        <YearSelector teamName={teamName}/>
+  if (matches.length > 0)
+    return (
+      <div className='matchPage'>
+        <div className="yearSelectorSection">
+          <h4>Select Year</h4>
+          <YearSelector teamName={teamName} />
+        </div>
+        <div>
+          <h1>Match History for {teamName} in {year}</h1>
+          {matches.map((match) => (<LatestMatchCard match={match} teamName={teamName} key={match.id} />))}
+        </div>
       </div>
-      <div>
-      <h1>Match History for {teamName} in {year}</h1>
-         {matches.map((match)=>( <LatestMatchCard match={match} teamName={teamName} key={match.id} />))}
-      </div>
-    </div>
-  )
+    )
 }
 
 export default MatchPage
